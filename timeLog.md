@@ -1,5 +1,4 @@
 ## Time Log ##
 
 
-Date | Details | Hours
-----------------------
+## Date | Details | Hours
