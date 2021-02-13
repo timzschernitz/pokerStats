@@ -12,3 +12,4 @@
 |2/8/2021|Work on week 3 exercise and indie check point 1|4|
 |2/9/2021|Work on indie check point 1|.5|
 |2/10/2021|Finish week 3 exercise|2|
+|2/13/2021|Finish indie checkpoint|3|
