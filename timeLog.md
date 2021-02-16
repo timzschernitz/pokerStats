@@ -13,3 +13,5 @@
 |2/9/2021|Work on indie check point 1|.5|
 |2/10/2021|Finish week 3 exercise|2|
 |2/13/2021|Finish indie checkpoint|3|
+|2/13/2021|Watch some week 4 videos and completed corresponding follow along code|2|
+|2/14/2021|Worked through the remainder of week 4 including videos and exercise|6|
