@@ -1,0 +1,1 @@
+INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0);
