@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 
 import edu.matc.entity.Game;
 import org.apache.logging.log4j.LogManager;
@@ -115,7 +112,7 @@ public class GenericDao<T> {
      * @param value the value by which to find.
      * @return
      */
-    public List<T> findByPropertyEqual(String propertyName, Object value) {
+    public List<T> getByPropertyEqual(String propertyName, Object value) {
         Session session = getSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);
@@ -133,7 +130,7 @@ public class GenericDao<T> {
      *
      *
      */
-    public List<T> findByPropertyEqual(Map<String, Object> propertyMap) {
+    public List<T> getByPropertyEqual(Map<String, Object> propertyMap) {
         Session session = getSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);
@@ -146,7 +143,6 @@ public class GenericDao<T> {
 
         return session.createQuery(query).getResultList();
     }
-
 
     /**
      * Returns an open session from the SessionFactory

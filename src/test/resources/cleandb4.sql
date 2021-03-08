@@ -1,1 +1,0 @@
-INSERT INTO test_poker.user VALUES ('pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), ('bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), ('stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0);

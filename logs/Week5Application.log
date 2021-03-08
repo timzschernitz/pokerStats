@@ -1,0 +1,2057 @@
+[DEBUG] 2021-03-07 16:23:05.060 [main] Database - delete from test_poker.game
+[DEBUG] 2021-03-07 16:23:05.141 [main] Database - delete from test_poker.user
+[DEBUG] 2021-03-07 16:23:05.219 [main] Database - INSERT INTO test_poker.user VALUES ('pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), ('bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), ('stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 16:23:05.261 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 16:48:37.555 [main] Database - delete from test_poker.game
+[DEBUG] 2021-03-07 16:48:37.613 [main] Database - delete from test_poker.user
+[DEBUG] 2021-03-07 16:48:37.664 [main] Database - INSERT INTO test_poker.user VALUES ('pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), ('bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), ('stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[ERROR] 2021-03-07 16:48:37.695 [main] Database - java.sql.SQLException: Column count doesn't match value count at row 1
+[DEBUG] 2021-03-07 16:48:37.737 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[ERROR] 2021-03-07 16:48:37.746 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`test_poker`.`game`, CONSTRAINT `user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_name`) ON DELETE CASCADE ON UPDATE CASCADE)
+[DEBUG] 2021-03-07 16:52:46.488 [main] Database - delete from test_poker.game
+[DEBUG] 2021-03-07 16:52:46.541 [main] Database - delete from test_poker.user
+[DEBUG] 2021-03-07 16:52:46.582 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 16:52:46.629 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:00:27.087 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:00:27.183 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:00:27.258 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:00:27.334 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:00:27.412 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:00:27.447 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:04:20.111 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:04:20.180 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:04:20.237 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:04:20.354 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:04:20.433 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:04:20.465 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:10:45.984 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:10:46.088 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:10:46.162 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:10:46.254 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:10:46.343 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:10:46.382 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:15:40.087 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:15:40.164 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:15:40.218 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:15:40.304 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:15:40.382 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:15:40.415 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:16:13.142 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:16:13.219 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:16:13.276 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:16:13.365 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:16:13.464 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:16:13.500 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:16:55.349 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:16:55.440 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:16:55.517 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:16:55.654 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:16:55.765 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:16:55.797 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:19:31.435 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:19:31.538 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:19:31.602 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:19:31.708 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:19:31.796 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:19:31.835 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:20:19.688 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:20:19.766 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:20:19.828 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:20:19.910 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:20:19.985 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:20:20.016 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:21:12.233 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:21:12.326 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:21:12.383 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:21:12.462 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:21:12.524 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:21:12.557 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:23:28.311 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:23:28.397 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:23:28.453 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:23:28.527 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:23:28.609 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:23:28.663 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:24:41.947 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:24:42.036 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:24:42.098 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:24:42.206 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:24:42.282 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:24:42.320 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:25:11.343 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:25:11.430 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:25:11.485 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:25:11.573 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:25:11.669 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:25:11.704 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:26:04.704 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:26:04.782 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:26:04.867 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:26:04.978 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:26:05.062 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:26:05.093 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:27:32.734 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:27:32.817 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:27:32.875 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:27:32.948 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:27:33.033 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:27:33.070 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:30:07.055 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:30:07.145 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:30:07.204 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:30:07.295 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:30:07.379 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:30:07.418 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:32:38.979 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:32:39.086 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:32:39.143 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:32:39.236 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:32:39.320 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:32:39.349 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:39:04.859 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:39:04.977 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:39:05.041 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:39:05.158 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:39:05.231 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:39:05.274 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:40:13.755 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:40:13.832 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:40:13.892 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:40:13.997 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:40:14.115 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:40:14.147 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:40:58.641 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:40:58.729 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:40:58.787 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:40:58.867 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:40:58.930 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:40:58.962 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:42:54.175 [main] Database - delete from test_poker.game
+[DEBUG] 2021-03-07 17:42:54.237 [main] Database - delete from test_poker.user
+[DEBUG] 2021-03-07 17:42:54.293 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:42:54.333 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 17:51:18.762 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 17:51:18.832 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 17:51:18.892 [main] Database - create table test_poker.user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:51:18.979 [main] Database - create table test_poker.game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 17:51:19.064 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 17:51:19.105 [main] Database - INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES (1, 'pokerstar', '2021/02/21', 20, 0, 1, 60), (2, 'bigspender21', '2021/02/21', 20, 20, 2, 20), (3, 'stacksOcash', '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 18:21:19.705 [main] Database - DROP TABLE test_poker.game
+[ERROR] 2021-03-07 18:21:19.733 [main] Database - java.sql.SQLSyntaxErrorException: Unknown table 'test_poker.game'
+[DEBUG] 2021-03-07 18:21:19.768 [main] Database - DROP TABLE test_poker.user
+[ERROR] 2021-03-07 18:21:19.770 [main] Database - java.sql.SQLSyntaxErrorException: Unknown table 'test_poker.user'
+[DEBUG] 2021-03-07 18:21:19.803 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:21:19.891 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           varchar(30)    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (user_name)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:21:19.984 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 18:21:20.019 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[ERROR] 2021-03-07 18:21:20.025 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`test_poker`.`game`, CONSTRAINT `user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_name`) ON DELETE CASCADE ON UPDATE CASCADE)
+[DEBUG] 2021-03-07 18:24:04.670 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 18:24:04.754 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 18:24:04.828 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:24:04.912 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:24:04.997 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 18:24:05.033 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 18:25:16.562 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 18:25:16.630 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 18:25:16.688 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:25:16.773 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:25:16.871 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 18:25:16.905 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 18:25:20.623 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 18:25:20.698 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 18:25:20.755 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:25:20.854 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:25:20.944 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 18:25:20.974 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 18:26:51.583 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 18:26:51.655 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 18:26:51.709 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:26:51.794 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:26:51.872 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 18:26:51.902 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 18:27:08.028 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 18:27:08.113 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 18:27:08.162 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:27:08.259 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:27:08.336 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 18:27:08.370 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 18:28:16.725 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 18:28:16.805 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 18:28:16.867 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:28:16.973 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:28:17.057 [main] Database - INSERT INTO test_poker.user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 18:28:17.093 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 18:29:26.181 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 18:29:26.319 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 18:29:26.375 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:29:26.442 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:29:26.510 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 18:29:26.540 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 18:33:13.876 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 18:33:13.974 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 18:33:14.046 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:33:14.130 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:33:14.200 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 18:33:14.229 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 18:34:01.113 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 18:34:01.237 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 18:34:01.298 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:34:01.393 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:34:01.477 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 18:34:01.512 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 18:34:24.543 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 18:34:24.632 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 18:34:24.691 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:34:24.767 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 18:34:24.843 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 18:34:24.873 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:15:38.420 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:15:38.510 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:15:38.567 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:15:38.653 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:15:38.735 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:15:38.767 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:21:17.849 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:21:17.931 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:21:17.990 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:21:18.070 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:21:18.144 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:21:18.178 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:22:03.061 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:22:03.133 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:22:03.189 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:22:03.265 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:22:03.334 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:22:03.367 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:23:09.790 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:23:09.893 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:23:09.947 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:23:10.024 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:23:10.094 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:23:10.123 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:40:19.868 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:40:19.957 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:40:20.023 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:40:20.122 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:40:20.221 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:40:20.263 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:42:06.943 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:42:07.032 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:42:07.114 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:42:07.256 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:42:07.339 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:42:07.374 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:43:18.195 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:43:18.287 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:43:18.357 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:43:18.461 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:43:18.555 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:43:18.602 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:47:22.394 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:47:22.500 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:47:22.566 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:47:22.665 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:47:22.793 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:47:22.831 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:48:50.529 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:48:50.614 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:48:50.691 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:48:50.795 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:48:50.897 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:48:50.941 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:49:27.064 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:49:27.175 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:49:27.258 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:49:27.363 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:49:27.453 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:49:27.488 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:51:00.474 [main] Database - delete from test_poker.game
+[DEBUG] 2021-03-07 20:51:00.529 [main] Database - delete from test_poker.user
+[DEBUG] 2021-03-07 20:51:00.575 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:51:00.615 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[ERROR] 2021-03-07 20:51:00.637 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`test_poker`.`game`, CONSTRAINT `user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+[DEBUG] 2021-03-07 20:51:03.887 [main] Database - delete from test_poker.game
+[DEBUG] 2021-03-07 20:51:03.954 [main] Database - delete from test_poker.user
+[DEBUG] 2021-03-07 20:51:04.037 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:51:04.112 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[ERROR] 2021-03-07 20:51:04.132 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`test_poker`.`game`, CONSTRAINT `user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+[DEBUG] 2021-03-07 20:51:04.278 [main] Database - delete from test_poker.game
+[DEBUG] 2021-03-07 20:51:04.339 [main] Database - delete from test_poker.user
+[DEBUG] 2021-03-07 20:51:04.426 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:51:04.504 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[ERROR] 2021-03-07 20:51:04.508 [main] Database - java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`test_poker`.`game`, CONSTRAINT `user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+[DEBUG] 2021-03-07 20:57:27.367 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:57:27.646 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:57:27.737 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:57:27.872 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:57:27.967 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:57:28.005 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:57:59.106 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:57:59.189 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:57:59.258 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:57:59.345 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:57:59.453 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:57:59.496 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:58:43.852 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:58:43.976 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:58:44.157 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:58:44.257 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:58:44.334 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:58:44.367 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:58:47.569 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:58:47.668 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:58:47.761 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:58:47.879 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:58:47.985 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:58:48.042 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:58:48.130 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:58:48.243 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:58:48.311 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:58:48.390 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:58:48.465 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:58:48.491 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:58:48.550 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:58:48.613 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:58:48.673 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:58:48.726 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:58:48.795 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:58:48.824 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:58:48.882 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:58:48.950 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:58:49.007 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:58:49.090 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:58:49.177 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:58:49.208 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 20:58:49.280 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 20:58:49.343 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 20:58:49.398 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:58:49.481 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 20:58:49.563 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 20:58:49.613 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 21:10:17.927 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 21:10:18.024 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 21:10:18.141 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:18.268 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:18.354 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 21:10:18.389 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 21:10:36.766 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 21:10:36.850 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 21:10:36.910 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:36.990 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:37.079 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 21:10:37.119 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 21:10:39.846 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 21:10:39.943 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 21:10:40.014 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:40.127 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:40.219 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 21:10:40.269 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 21:10:40.342 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 21:10:40.397 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 21:10:40.458 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:40.538 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:40.625 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 21:10:40.662 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 21:10:40.723 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 21:10:40.791 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 21:10:40.851 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:40.925 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:41.013 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 21:10:41.048 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 21:10:41.101 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 21:10:41.151 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 21:10:41.215 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:41.285 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:41.357 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 21:10:41.381 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)
+[DEBUG] 2021-03-07 21:10:41.439 [main] Database - DROP TABLE test_poker.game
+[DEBUG] 2021-03-07 21:10:41.493 [main] Database - DROP TABLE test_poker.user
+[DEBUG] 2021-03-07 21:10:41.538 [main] Database - create table user
+(
+    id int(11) not null auto_increment primary key,
+    user_name  varchar(30)          not null,
+    first_name varchar(25)          null,
+    last_name  varchar(40)          null,
+    location   varchar(30)          null,
+    league     varchar(35)          not null,
+    admin      tinyint(1) default 0 not null,
+
+    constraint user_name_u_index
+        unique (user_name)
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:41.612 [main] Database - create table game
+(
+    id                int auto_increment primary key ,
+    user_id           int    not null,
+    date_played       date           not null,
+    buy_in_paid       int default 20 not null,
+    rebuy_paid        int default 0  null,
+    position_finished int            not null,
+    money_won         int default 0  null,
+    constraint game_id_u_index
+        unique (id),
+    constraint user_id_fk
+        foreign key (user_id) references user (id)
+            on update cascade on delete cascade
+)
+    charset = latin1
+[DEBUG] 2021-03-07 21:10:41.791 [main] Database - INSERT INTO user VALUES (default, 'pokerstar', 'jim', 'cunningham', 'East Madison', 'MAD CITY POKER', 0), (default, 'bigspender21', 'sal', 'morrison', 'Tomah', 'MAD CITY POKER', 1), (default, 'stacksOcash', 'rich', 'diamonds', 'Minneapolis', 'MAD CITY POKER', 0)
+[DEBUG] 2021-03-07 21:10:41.826 [main] Database - INSERT INTO game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
+    (1, 1, '2021/02/21', 20, 0, 1, 60),
+    (2, 2, '2021/02/21', 20, 20, 2, 20),
+    (3, 3, '2021/02/21', 20, 0, 3, 0)

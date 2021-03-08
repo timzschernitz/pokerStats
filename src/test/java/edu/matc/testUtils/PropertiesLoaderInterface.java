@@ -1,5 +1,8 @@
 package edu.matc.testUtils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 import java.util.Properties;
 
@@ -19,15 +22,16 @@ public interface PropertiesLoaderInterface {
      * the file path was not found.
      */
     default Properties loadProperties(String propertiesFilePath){
+
+        final Logger logger = LogManager.getLogger(this.getClass());
+
         Properties properties = new Properties();
         try {
             properties.load(this.getClass().getResourceAsStream(propertiesFilePath));
         } catch (IOException ioException) {
-            System.out.println("Can't load the properties file.");
-            ioException.printStackTrace();
+            logger.error("Can't load the properties file.", ioException);
         } catch (Exception exception) {
-            System.out.println("Something went wrong.");
-            exception.printStackTrace();
+            logger.error("Something went wrong.", exception);
         }
         return properties;
     }

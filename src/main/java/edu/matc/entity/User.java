@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- *
+ * The type User.
  *
  * @author tzschernitz
  */
@@ -19,9 +19,11 @@ import java.util.Set;
 public class User {
 
     @Id
-    @Column(name = "user_name")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
+    private int id;
+
+    @Column(name = "user_name")
     private String userName;
 
     @Column(name = "first_name")
@@ -32,17 +34,30 @@ public class User {
 
     private String location;
 
-    private int admin;
-
     private String league;
+
+    private int admin;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Game> games = new HashSet<>();
 
 
+    /**
+     * Instantiates a new User.
+     */
     public User() {
     }
 
+    /**
+     * Instantiates a new User.
+     *
+     * @param userName  the user name
+     * @param firstName the first name
+     * @param lastName  the last name
+     * @param location  the location
+     * @param admin     the admin
+     * @param league    the league
+     */
     public User(String userName, String firstName, String lastName, String location, int admin, String league) {
         this.userName = userName;
         this.firstName = firstName;
@@ -52,50 +67,128 @@ public class User {
         this.league = league;
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Gets user name.
+     *
+     * @return the user name
+     */
     public String getUserName() {
         return userName;
     }
 
+    /**
+     * Sets user name.
+     *
+     * @param userName the user name
+     */
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
+    /**
+     * Gets first name.
+     *
+     * @return the first name
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Sets first name.
+     *
+     * @param firstName the first name
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * Gets last name.
+     *
+     * @return the last name
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Sets last name.
+     *
+     * @param lastName the last name
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * Gets location.
+     *
+     * @return the location
+     */
     public String getLocation() {
         return location;
     }
 
+    /**
+     * Sets location.
+     *
+     * @param location the location
+     */
     public void setLocation(String location) {
         this.location = location;
     }
 
+    /**
+     * Is admin int.
+     *
+     * @return the int
+     */
     public int isAdmin() {
         return admin;
     }
 
+    /**
+     * Sets admin.
+     *
+     * @param admin the admin
+     */
     public void setAdmin(int admin) {
         this.admin = admin;
     }
 
+    /**
+     * Gets league.
+     *
+     * @return the league
+     */
     public String getLeague() {
         return league;
     }
 
+    /**
+     * Sets league.
+     *
+     * @param league the league
+     */
     public void setLeague(String league) {
         this.league = league;
     }
@@ -103,12 +196,14 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userName='" + userName + '\'' +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", location='" + location + '\'' +
                 ", admin=" + admin +
                 ", league='" + league + '\'' +
+                ", games=" + games +
                 '}';
     }
 
@@ -117,8 +212,9 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return userName == user.userName &&
+        return id == user.id &&
                 admin == user.admin &&
+                Objects.equals(userName, user.userName) &&
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(lastName, user.lastName) &&
                 Objects.equals(location, user.location) &&
@@ -127,6 +223,6 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(userName, firstName, lastName, location, admin, league);
+        return Objects.hash(id, userName, firstName, lastName, location, admin, league, games);
     }
 }

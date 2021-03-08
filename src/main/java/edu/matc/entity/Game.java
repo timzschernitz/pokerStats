@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author tzschernitz
  */
 @Entity(name = "Game")
-@Table(name = "game") // case sensitive!
+@Table(name = "game")
 public class Game {
 
     @Id
@@ -134,6 +134,6 @@ public class Game {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, datePlayed, buyInPaid, rebuyPaid, moneyWon, positionFinished, user);
+        return Objects.hash(id, datePlayed, buyInPaid, rebuyPaid, moneyWon, positionFinished);
     }
 }
