@@ -26,8 +26,8 @@
 
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>home</web-resource-name>
-            <url-pattern>/user/home.jsp</url-pattern>
+            <web-resource-name>user</web-resource-name>
+            <url-pattern>/user/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>registered</role-name>
