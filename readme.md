@@ -35,16 +35,14 @@ implement instead.
 ### project timeline ###
 |Week|Start Date|Details|
 |:----------|:--------|:------|
-|Week 5	|2/14/2021|	Create database and tables|
-|Week 6	|2/21/2021|	Start work on front end	|
-|Week 7	|2/28/2021|	Continue work on front end|
-|Week 8	|3/7/2021|Finish work on front end|
-|springbreak|3/14/2021|Start work on backend|
-|Week 9	|3/21/2021|Start work on backend|
-|Week 10|3/28/2021|Finish work on backend|
-|Week 11|4/4/2021|Hook up front end with back|
-|Week 12|4/11/2021|Hook up front end with back|
-|Week 13|4/18/2021|Complete front and back end|
-|Week 14|4/25/2021|Full testing of application|
+|Week 7	|2/28/2021|	Create database |
+|Week 8	|3/7/2021| Begin work on login process and some front end features |
+|springbreak|3/14/2021| Complete work on landing page, login process, and begin navbar |
+|Week 9	|3/21/2021| Begin work on registration process and continue work on profile features|
+|Week 10|3/28/2021|Finish work on profile features including personal stats. |
+|Week 11|4/4/2021| Begin work on League Info features: player list, past game results, and leaderboard |
+|Week 12|4/11/2021|Finish work on league info features. Being work on admin features|
+|Week 13|4/18/2021|Complete work on admin features. Implement API usage...|
+|Week 14|4/25/2021|Run through app and apply cosmetic enhancements (styling: font, colors, etc. )|
 |Week 15|5/2/2021|Fix/clean up any remaining items|
 |Week 16|5/9/2021|Give presentation|
