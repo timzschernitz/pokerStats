@@ -4,9 +4,7 @@
 
 <c:import url="banner.jsp" />
 
-
 <div class="row text-center">
-
     <div class="col-sm-2 col-md-3 col-lg-4"></div>
     <div class="col-sm-8 col-md-6 col-lg-4">
         <div class="card h-100">
@@ -28,5 +26,15 @@
     <div class="col-sm-2 col-md-3 col-lg-4"></div>
 </div>
 
+<c:if test = "${loginError != null}">
+    <div class="row mt-3">
+        <div class="col-sm-2 col-md-3 col-lg-4"></div>
+        <div class="col-sm-8 col-md-6 col-lg-4 text-center">
+                ${loginError}
+        </div>
+        <div class="col-sm-2 col-md-3 col-lg-4"></div>
+    </div>
+    <c:remove var="loginError" />
+</c:if>
 
 <c:import url="footer.jsp" />

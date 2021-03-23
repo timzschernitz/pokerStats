@@ -12,7 +12,7 @@
                 <h5 class="card-title">I have an existing account</h5>
                 <p class="card-text">If you already have a poker stats account, click the button below to login.</p>
                 <div class="text-center">
-                    <a href="user/home" class="btn btn-primary">Login</a>
+                    <a href="user/login" class="btn btn-primary">Login</a>
                 </div>
             </div>
         </div>

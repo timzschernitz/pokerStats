@@ -23,7 +23,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="playerInfoDropdown">
                             <li><a class="dropdown-item" href="#">My Stats</a></li>
-                            <li><a class="dropdown-item" href="#">View My Profile</a></li>
+                            <li><a class="dropdown-item" href="profileView">View My Profile</a></li>
                             <li><a class="dropdown-item" href="#">Edit My Profile</a></li>
                         </ul>
                     </li>
