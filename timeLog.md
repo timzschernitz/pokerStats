@@ -22,3 +22,10 @@
 |2/22/2021|Watched week 6 overview, clean code talks, and part 1 AWS setup videos |1|
 |2/24/2021|Worked through week 6 content setting up AWS|1.5|
 |2/25/2021|Wrapped up week 6 content|3|
+|3/6/2021|Work on week 7 content |4|
+|3/7/2021|Wrap up checkpoint 2 for indie project|4|
+|3/13/2021|Completed week 8 content|5|
+|3/18/2021|Start work on the custom tags extra credit|3|
+|3/19/2021|Continue work on indie project for checkpoint 3|2|
+|3/20/2021|More work on indie project|4|
+|3/22/2021|Wrap up last necessary details to meet checkpoint 3 for indie proj.|5|
