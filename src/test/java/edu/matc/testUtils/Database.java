@@ -31,7 +31,7 @@ public class Database implements PropertiesLoaderInterface {
 
     // private constructor prevents instantiating this class anywhere else
     private Database() {
-        properties = loadProperties("/database.properties");
+        properties = loadProperties("/querysForTesting/database.properties");
 
     }
 

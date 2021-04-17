@@ -8,35 +8,58 @@
     <name>Poker Stat Tracking App</name>
     <url>http://maven.apache.org</url>
     <properties>
-        <hibernate-version>5.4.4.Final</hibernate-version>
+        <maven.compiler.release>11</maven.compiler.release>
+        <junit.version>4.12</junit.version>
         <javax.version>7.0</javax.version>
-        <jstl-version>1.2</jstl-version>
+        <mysql-version>8.0.22</mysql-version>
+        <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
+        <log4j-version>2.10.0</log4j-version>
         <junit-platform-runner-version>1.0.0</junit-platform-runner-version>
+        <maven-surefire-plugin-version>2.19</maven-surefire-plugin-version>
         <junit.version>4.12</junit.version>
         <junit-vintage-version>4.12.0</junit-vintage-version>
         <jupiter-version>5.0.0</jupiter-version>
-        <log4j-version>2.10.0</log4j-version>
-        <maven.compiler.release>11</maven.compiler.release>
-        <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
-        <maven-surefire-plugin-version>2.19</maven-surefire-plugin-version>
-        <mysql-version>8.0.16</mysql-version>
+        <hibernate-version>5.4.4.Final</hibernate-version>
+        <hibernate-c3p0-version>5.4.4.Final</hibernate-c3p0-version>
+        <jersey-version>2.29.1</jersey-version>
+        <jackson-version>2.10.0</jackson-version>
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate-version}</version>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>${javax.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-c3p0</artifactId>
-            <version>${hibernate-version}</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-version}</version>
         </dependency>
-
-        <!-- next 2 dependencies are for log4j -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.10.9</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>jstl-api</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/taglibs/standard -->
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <!-- Logging framework next 2 dependencies are for Log4j-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
@@ -46,11 +69,6 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>${javax.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
@@ -76,21 +94,60 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl-version}</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <!-- c3p0 - used to handle connection pooling with hibernate -->
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-version}</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>${hibernate-c3p0-version}</version>
         </dependency>
+
+        <!-- next two dependencies are for week 08, activity 2 REST activity-->
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>${jersey-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+            <version>${jersey-version}</version>
+        </dependency>
+
+        <!-- Next 3 dependencies for week 08, activity 3 -->
+
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
-        <finalName>Indie-Project-Poker-Stat-Tracking</finalName>
+        <finalName>week8exercise</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -112,4 +169,5 @@
             </plugins>
         </pluginManagement>
     </build>
+
 </project>
