@@ -29,12 +29,12 @@ public class UserDaoTest {
          * for each test. Statements are run in a specific order to prevent integrity
          * errors.
         */
-        database.runSQL("deleteGameTable.sql");
-        database.runSQL("deleteUserTable.sql");
-        database.runSQL("createUserTable.sql");
-        database.runSQL("createGameTable.sql");
-        database.runSQL("populateUserTable.sql");
-        database.runSQL("populateGameTable.sql");
+        database.runSQL("querysForTesting/deleteGameTable.sql");
+        database.runSQL("querysForTesting/deleteUserTable.sql");
+        database.runSQL("querysForTesting/createUserTable.sql");
+        database.runSQL("querysForTesting/createGameTable.sql");
+        database.runSQL("querysForTesting/populateUserTable.sql");
+        database.runSQL("querysForTesting/populateGameTable.sql");
 
     }
 
