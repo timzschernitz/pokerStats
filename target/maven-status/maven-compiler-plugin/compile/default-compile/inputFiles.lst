@@ -1,10 +1,13 @@
+C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\service\LookupService.java
 C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\controller\LoginSuccess.java
+C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\entity\response\TournamentResult.java
+C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\persistence\SessionFactoryProvider.java
+C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\controller\ViewMyProfile.java
+C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\controller\RegisterAction.java
+C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\entity\User.java
 C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\controller\LoginFailure.java
 C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\controller\RegisterView.java
 C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\controller\LeaderboardView.java
 C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\entity\Game.java
 C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\persistence\GenericDao.java
-C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\persistence\SessionFactoryProvider.java
-C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\controller\ViewMyProfile.java
-C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\controller\RegisterAction.java
-C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\entity\User.java
+C:\Users\surnu\IdeaProjects\indieProject\src\main\java\edu\matc\entity\response\TournamentList.java
