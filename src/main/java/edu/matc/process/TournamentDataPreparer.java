@@ -7,9 +7,6 @@ import java.util.Map;
 
 public class TournamentDataPreparer {
 
-    // This word "Place" needs to be stripped out from the data
-    String WORD_TO_REMOVE_FROM_USER_RESULT_DATA = "Place";
-
     List<String> dataToPrepare;
     ArrayList<String[]> preparedData;
     ArrayList<HashMap<String, String>> finalPreparedData;
@@ -22,43 +19,24 @@ public class TournamentDataPreparer {
         finalPreparedData = new ArrayList<>();
     }
 
-    public ArrayList<String[]> go() {
-//        parseOutStringData(fixLabelsAndAddDelimiters(extractUserDataRows(dataToPrepare)));
-//
-//        System.out.println(preparedData.get(0)[0]);
-//        System.out.println(preparedData.get(0)[1]);
-//        System.out.println(preparedData.get(0)[2]);
-//        System.out.println(preparedData.get(0)[3]);
-//        System.out.println(preparedData.get(0)[4]);
-//        System.out.println(preparedData.get(0)[5]);
-//        System.out.println(preparedData.get(0)[6]);
-//        System.out.println(preparedData.get(0)[7]);
-//        System.out.println(preparedData.get(0)[8]);
-//        System.out.println(preparedData.get(0)[9]);
-//        System.out.println(preparedData.get(0)[10]);
+    public ArrayList<HashMap<String, String>> prepareData() {
 
-        assignKeyValuePairing(
+        return storePreparedData(
                 parseOutStringData(
-                        fixLabelsAndAddDelimiters(
-                                extractUserDataRows(dataToPrepare))));
+                fixLabelsAndAddDelimiters(
+                extractUserDataRows(dataToPrepare))));
 
-        int indexTest = 0;
-        for (HashMap<String, String> test : finalPreparedData) {
-            indexTest++;
-
-            for (Map.Entry<String, String> test2 : test.entrySet()) {
-                System.out.println("player#" + indexTest + "==== " + test2.getKey() + " " + test2.getValue());
-            }
-        }
-
-
-//        System.out.println(finalPreparedData.get(0).get("user"));
-
-
-        return preparedData;
+//        int indexTest = 0;
+//        for (HashMap<String, String> test : finalPreparedData) {
+//            indexTest++;
+//
+//            for (Map.Entry<String, String> test2 : test.entrySet()) {
+//                System.out.println("player#" + indexTest + "==== " + test2.getKey() + " " + test2.getValue());
+//            }
+//        }
     }
 
-    public ArrayList<HashMap<String, String>> assignKeyValuePairing(ArrayList<String[]> dataToPrepare) {
+    public ArrayList<HashMap<String, String>> storePreparedData(ArrayList<String[]> dataToPrepare) {
 
         HashMap<String, String> userTournamentData;
 
@@ -74,7 +52,6 @@ public class TournamentDataPreparer {
             }
             finalPreparedData.add(userTournamentData);
         }
-        this.finalPreparedData = finalPreparedData;
         return finalPreparedData;
     }
 
