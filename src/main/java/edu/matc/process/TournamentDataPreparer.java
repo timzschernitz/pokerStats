@@ -26,14 +26,6 @@ public class TournamentDataPreparer {
                 fixLabelsAndAddDelimiters(
                 extractUserDataRows(dataToPrepare))));
 
-//        int indexTest = 0;
-//        for (HashMap<String, String> test : finalPreparedData) {
-//            indexTest++;
-//
-//            for (Map.Entry<String, String> test2 : test.entrySet()) {
-//                System.out.println("player#" + indexTest + "==== " + test2.getKey() + " " + test2.getValue());
-//            }
-//        }
     }
 
     public ArrayList<HashMap<String, String>> storePreparedData(ArrayList<String[]> dataToPrepare) {

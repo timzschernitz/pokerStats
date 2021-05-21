@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 public class TournamentResultLookupServiceTest implements PropertiesLoaderInterface {
@@ -28,8 +29,11 @@ public class TournamentResultLookupServiceTest implements PropertiesLoaderInterf
     void setUp() {
         lookup = new LookupService(TournamentResult.class);
 
-        apiUrl = properties.getProperty("local.api.request.path");
-
+        apiUrl = properties.getProperty("local.api.base.url");
+        apiUrl += properties.getProperty("local.api.password");
+        apiUrl += properties.getProperty("api.json.indicator");
+//        apiUrl += properties.getProperty();
+//        apiUrl += properties.getProperty();
 
         //apiUrl = "http://localhost:8087/api?password=scottPilgrimVS7EvilXs&command=TournamentsResults&date=2021-04-17&name=Tournament%20%2306&JSON=YES";
 
@@ -42,6 +46,24 @@ public class TournamentResultLookupServiceTest implements PropertiesLoaderInterf
 
         tournamentResult = (TournamentResult) lookup.lookupDetails(apiUrl);
         ArrayList<HashMap<String, String>> preparedData = new TournamentDataPreparer(tournamentResult.getData()).prepareData();
+
+
+
+        int indexTest = 0;
+        for (HashMap<String, String> test : preparedData) {
+            indexTest++;
+
+            for (Map.Entry<String, String> test2 : test.entrySet()) {
+                System.out.println(
+                        "==== " + "player#"
+                                + indexTest
+                                + "==== "
+                                + test2.getKey()
+                                + " "
+                                + test2.getValue()
+                );
+            }
+        }
 
     }
 }
