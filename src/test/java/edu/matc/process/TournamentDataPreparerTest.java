@@ -1,10 +1,27 @@
 package edu.matc.process;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TournamentDataPreparerTest {
+
+    @BeforeEach
+    void init() {
+
+    }
+
+
+    @Test
+    void test() {
+        ArrayList<HashMap<String, String>> bork = new ArrayList<>();
+
+
+    }
 
     @Test
     void prepareData() {

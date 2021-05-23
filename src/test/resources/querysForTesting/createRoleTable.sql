@@ -1,4 +1,4 @@
-create table role
+create table test_poker.role
 (
     id        int auto_increment primary key,
     role_name varchar(25) not null,

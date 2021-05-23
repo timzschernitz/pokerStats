@@ -55,7 +55,7 @@ public class TournamentResultLookupServiceTest implements PropertiesLoaderInterf
 
             for (Map.Entry<String, String> test2 : test.entrySet()) {
                 System.out.println(
-                        "==== " + "player#"
+                        "====" + "player#"
                                 + indexTest
                                 + "==== "
                                 + test2.getKey()
