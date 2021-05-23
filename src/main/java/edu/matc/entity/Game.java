@@ -42,7 +42,12 @@ public class Game {
     public Game() {
     }
 
-    public Game(LocalDate datePlayed, int buyInPaid, int rebuyPaid, int moneyWon, int positionFinished, User user) {
+    public Game(LocalDate datePlayed,
+                int buyInPaid,
+                int rebuyPaid,
+                int moneyWon,
+                int positionFinished,
+                User user) {
         this.datePlayed = datePlayed;
         this.buyInPaid = buyInPaid;
         this.rebuyPaid = rebuyPaid;

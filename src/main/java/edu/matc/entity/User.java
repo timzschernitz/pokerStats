@@ -26,6 +26,9 @@ public class User {
     @Column(name = "user_name")
     private String userName;
 
+    @Column(name = "pass")
+    private String password;
+
     @Column(name = "first_name")
     private String firstName;
 
@@ -40,7 +43,6 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Game> games = new HashSet<>();
-
 
     /**
      * Instantiates a new User.
@@ -101,6 +103,24 @@ public class User {
      */
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    /**
+     * Gets password.
+     *
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Sets password.
+     *
+     * @param password the password
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /**

@@ -50,9 +50,9 @@ public class LoginSuccess extends HttpServlet {
 //            req.setAttribute("users", userDao.getAll());
 //        }
 
-//        String username = req.getUserPrincipal().getName();
-//        HttpSession session = req.getSession();
-//        session.setAttribute("username", username);
+        String username = req.getUserPrincipal().getName();
+        HttpSession session = req.getSession();
+        session.setAttribute("username", username);
 //
 //        System.out.println(req.isUserInRole("admin"));
 

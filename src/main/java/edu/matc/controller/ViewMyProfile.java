@@ -37,7 +37,7 @@ public class ViewMyProfile extends HttpServlet {
         HttpSession session = req.getSession();
 //        String username = (String) session.getAttribute("username");
 
-        List<User> userProfileData = userDao.getByPropertyEqual("userName", req.getUserPrincipal().getName());
+        List<User> userProfileData = userDao.getByPropertyEqual("userName", req.getRemoteUser());
 
         /* Determine if sufficient search criteria entered for specific search or to
         / return all results from database.

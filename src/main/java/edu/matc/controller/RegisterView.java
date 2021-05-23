@@ -16,7 +16,7 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 
 /**
- * A simple servlet to welcome the user.
+ * Route the user to the registration form.
  * @author tzschernitz
  */
 
