@@ -2,7 +2,6 @@ package edu.matc.persistence;
 
 import edu.matc.entity.Game;
 import edu.matc.entity.User;
-import edu.matc.testUtils.Database;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,29 +11,17 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class UserDaoTest {
+public class UserDaoTest extends DaoTest {
 
     GenericDao userDao;
-    Database database;
 
     @BeforeEach
     void setUp() {
 
         userDao = new GenericDao(User.class);
 
-        database = Database.getInstance();
-
-        /* Series of SQL statements to drop test tables, create new ones,
-         * and populate them with fresh data so that primary key IDs are predictable
-         * for each test. Statements are run in a specific order to prevent integrity
-         * errors.
-        */
-        database.runSQL("querysForTesting/deleteGameTable.sql");
-        database.runSQL("querysForTesting/deleteUserTable.sql");
-        database.runSQL("querysForTesting/createUserTable.sql");
-        database.runSQL("querysForTesting/createGameTable.sql");
-        database.runSQL("querysForTesting/populateUserTable.sql");
-        database.runSQL("querysForTesting/populateGameTable.sql");
+        // Delete, create, and repopulate test tables in specific order prior to each unit test
+        resetDaoTestData();
 
     }
 
@@ -55,6 +42,7 @@ public class UserDaoTest {
 
         User newUser = new User("pokerPlayer", "michelle", "gorski", "Minnesota", 0, "MAD CITY POKER");
         newUser.setId(4);
+        newUser.setPassword("4444");
 
         int id = userDao.insert(newUser);
         User insertedUser = (User) userDao.getById(id);

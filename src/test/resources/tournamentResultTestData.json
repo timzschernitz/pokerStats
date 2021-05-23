@@ -1,0 +1,29 @@
+{
+  "Result": "Ok",
+  "Start": 0,
+  "Count": 22,
+  "Data": [
+    "Tournament=Tournament #01",
+    "Number=7",
+    "Currency=Primary",
+    "BuyIn=1500+0",
+    "Bounty=0",
+    "PrizeBonus=0",
+    "MultiplyBonus=No",
+    "Entrants=2",
+    "Uniques=2",
+    "Late=0",
+    "Tickets=0",
+    "Removed=0",
+    "Rebuys=0",
+    "AddOns=0",
+    "RebuyCost=0+0",
+    "NetBonus=0",
+    "StopOnChop=No",
+    "Start=2021-05-20 20:28:03",
+    "Place2=scoob (0) KO:goober",
+    "Place1=goober (3000) KO:goober",
+    "Stop=2021-05-20 20:29:36",
+    ""
+  ]
+}

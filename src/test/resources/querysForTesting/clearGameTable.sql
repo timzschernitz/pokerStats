@@ -1,1 +1,1 @@
-delete from test_poker.game;
+delete from test_poker.role;
