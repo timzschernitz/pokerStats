@@ -133,5 +133,5 @@ public class GameDaoTest extends DaoTest {
         assertEquals(1, obtainedAdminUsers.size());
 
     }
-    
+
 }

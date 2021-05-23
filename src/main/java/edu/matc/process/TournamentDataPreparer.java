@@ -5,20 +5,36 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+/**
+ * The type Tournament data preparer.
+ */
 public class TournamentDataPreparer {
 
+    /**
+     * The Data to prepare.
+     */
     List<String> dataToPrepare;
-    ArrayList<String[]> preparedData;
-    ArrayList<HashMap<String, String>> finalPreparedData;
 
+    /**
+     * Instantiates a new Tournament data preparer.
+     */
     public TournamentDataPreparer() {}
 
+    /**
+     * Instantiates a new Tournament data preparer.
+     *
+     * @param dataToPrepare the data to prepare
+     */
     public TournamentDataPreparer(List<String> dataToPrepare) {
         this.dataToPrepare = dataToPrepare;
-        preparedData = new ArrayList<>();
-        finalPreparedData = new ArrayList<>();
     }
 
+    /**
+     * Prepare data array list.
+     *
+     * @return the array list
+     */
     public ArrayList<HashMap<String, String>> prepareData() {
 
         return storePreparedData(
@@ -28,9 +44,16 @@ public class TournamentDataPreparer {
 
     }
 
+    /**
+     * Store prepared data array list.
+     *
+     * @param dataToPrepare the data to prepare
+     * @return the array list
+     */
     public ArrayList<HashMap<String, String>> storePreparedData(ArrayList<String[]> dataToPrepare) {
 
         HashMap<String, String> userTournamentData;
+        ArrayList<HashMap<String, String>> finalPreparedData = new ArrayList<>();
 
         for (String[] userData : dataToPrepare) {
             userTournamentData = new HashMap<>();
@@ -48,9 +71,19 @@ public class TournamentDataPreparer {
     }
 
 
+    /**
+     * Parse out string data array list.
+     *
+     * @param dataToPrepare the data to prepare
+     * @return the array list
+     */
     public ArrayList<String[]> parseOutStringData(ArrayList<String> dataToPrepare) {
+
+        ArrayList<String[]> preparedData = new ArrayList<>();
+
         for (String resultDataRow : dataToPrepare) {
-                preparedData.add(separateStringBySpaces(resultDataRow));
+                preparedData.add(resultDataRow.split("=|\\s|:"));
+                //preparedData.add(separateStringBySpaces(resultDataRow));
         }
         return preparedData;
     }
@@ -59,8 +92,8 @@ public class TournamentDataPreparer {
      * This method filters the Tournament Result data and extracts just the rows
      * relevant to individual user results.
      *
-     * @param dataToPrepare
-     * @return
+     * @param dataToPrepare the data to prepare
+     * @return array list
      */
     public ArrayList<String> extractUserDataRows(List<String> dataToPrepare) {
         ArrayList<String> filteredData = new ArrayList<>();
@@ -74,20 +107,21 @@ public class TournamentDataPreparer {
 
     /**
      * Splits a string by equals signs (=), spaces ( ), and colons (:).
-     * @param dataToSplit
-     * @return
+     *
+     * @param dataToSplit the data to split
+     * @return string [ ]
      */
-    public String[] separateStringBySpaces(String dataToSplit) {
-        return dataToSplit.split("=|\\s|:");
-    }
+//    public String[] separateStringBySpaces(String dataToSplit) {
+//        return dataToSplit.split("=|\\s|:");
+//    }
 
     /**
      * This method fixes the user data string rows by adding a label for Money Won
-     * data and also adds colons where there isn't one separating a label from
+     * data and also adds colons where there aren't one separating a label from
      * a corresponding value.
      *
-     * @param dataToFix
-     * @return
+     * @param dataToFix the data to fix
+     * @return array list
      */
     public ArrayList<String> fixLabelsAndAddDelimiters(ArrayList<String> dataToFix) {
         ArrayList<String> strippedData = new ArrayList<>();
