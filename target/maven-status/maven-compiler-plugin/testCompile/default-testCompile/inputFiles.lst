@@ -1,6 +1,7 @@
-C:\Users\surnu\IdeaProjects\indieProject\src\test\java\edu\matc\service\TournamentListLookupService.java
 C:\Users\surnu\IdeaProjects\indieProject\src\test\java\edu\matc\testUtils\PropertiesLoaderInterface.java
 C:\Users\surnu\IdeaProjects\indieProject\src\test\java\edu\matc\persistence\GameDaoTest.java
-C:\Users\surnu\IdeaProjects\indieProject\src\test\java\edu\matc\service\TournamentResultLookupService.java
+C:\Users\surnu\IdeaProjects\indieProject\src\test\java\edu\matc\service\TournamentListLookupServiceTest.java
+C:\Users\surnu\IdeaProjects\indieProject\src\test\java\edu\matc\process\TournamentDataPreparerTest.java
+C:\Users\surnu\IdeaProjects\indieProject\src\test\java\edu\matc\service\TournamentResultLookupServiceTest.java
 C:\Users\surnu\IdeaProjects\indieProject\src\test\java\edu\matc\persistence\UserDaoTest.java
 C:\Users\surnu\IdeaProjects\indieProject\src\test\java\edu\matc\testUtils\Database.java
