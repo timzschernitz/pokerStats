@@ -182,7 +182,7 @@ public class User {
      *
      * @return the int
      */
-    public int isAdmin() {
+    public int getAdmin() {
         return admin;
     }
 
