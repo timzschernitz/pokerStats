@@ -12,12 +12,12 @@
 
             <div class="form-group">
                 <label for="userName">Username</label>
-                <input type="text" class="form-control" id="userName" name="userName">
+                <input type="text" class="form-control" id="userName" name="userName" required>
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input type="password" class="form-control" id="password" name="password" required>
                 <label for="passwordReentry">Re-enter Password</label>
                 <input type="password" class="form-control" id="passwordReentry" name="passwordReentry">
             </div>
@@ -25,22 +25,22 @@
 
             <div class="form-group">
                 <label for="league">League Name</label>
-                <input type="text" class="form-control" id="league" name="league">
+                <input type="text" class="form-control" id="league" name="league" required>
             </div>
 
             <div class="form-group">
                 <label for="firstName">First name</label>
-                <input type="text" class="form-control" id="firstName" name="firstName">
+                <input type="text" class="form-control" id="firstName" name="firstName" required>
             </div>
 
             <div class="form-group">
                 <label for="lastName">Last name</label>
-                <input type="text" class="form-control" id="lastName" name="lastName">
+                <input type="text" class="form-control" id="lastName" name="lastName" required>
             </div>
 
             <div class="form-group">
                 <label for="location">Location</label>
-                <input type="text" class="form-control" id="location" name="location">
+                <input type="text" class="form-control" id="location" name="location" required>
             </div>
 
                 <p>Are you a league admin?</p>
@@ -50,10 +50,11 @@
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="admin" id="notAdmin" value="no" checked>
+                    <input class="form-check-input" type="radio" name="admin" id="notAdmin" value="no" checked required>
                     <label class="form-check-label" for="notAdmin">No</label>
                 </div>
 
+            <br /><br />
             <input type="submit" name="submit" value="Register" class="btn btn-primary" />
 
         </form>
