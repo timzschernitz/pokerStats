@@ -83,7 +83,6 @@ public class TournamentDataPreparer {
 
         for (String resultDataRow : dataToPrepare) {
                 preparedData.add(resultDataRow.split("=|\\s|:"));
-                //preparedData.add(separateStringBySpaces(resultDataRow));
         }
         return preparedData;
     }
@@ -104,16 +103,6 @@ public class TournamentDataPreparer {
         }
         return filteredData;
     }
-
-    /**
-     * Splits a string by equals signs (=), spaces ( ), and colons (:).
-     *
-     * @param dataToSplit the data to split
-     * @return string [ ]
-     */
-//    public String[] separateStringBySpaces(String dataToSplit) {
-//        return dataToSplit.split("=|\\s|:");
-//    }
 
     /**
      * This method fixes the user data string rows by adding a label for Money Won
