@@ -46,7 +46,7 @@ public class RegisterAction extends HttpServlet {
                 req.getParameter("lastName"),
                 req.getParameter("location"),
                 req.getParameter("admin").equals("yes") ? 1 : 0,
-                req.getParameter("firstName"));
+                req.getParameter("league"));
         user.setPassword(req.getParameter("password"));
 
         //TODO need to add a try catch block here for when the registration fails rather than allowing an exception

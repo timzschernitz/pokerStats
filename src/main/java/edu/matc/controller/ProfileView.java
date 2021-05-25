@@ -25,7 +25,7 @@ import static java.lang.Integer.parseInt;
         urlPatterns = {"/user/profileView"}
 )
 
-public class ViewMyProfile extends HttpServlet {
+public class ProfileView extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {

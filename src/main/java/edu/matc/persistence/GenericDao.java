@@ -105,6 +105,18 @@ public class GenericDao<T> {
         session.close();
     }
 
+    /**
+     * Inserts or updates the entity.
+     *
+     * @param entity entity to be inserted/saved
+     */
+    public void mergeUpdate(T entity) {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+        session.merge(entity);
+        transaction.commit();
+        session.close();
+    }
 
     /**
      * Finds entities by one of its properties.

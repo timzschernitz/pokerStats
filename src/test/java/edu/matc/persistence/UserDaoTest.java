@@ -84,6 +84,19 @@ public class UserDaoTest extends DaoTest {
         assertEquals(userToUpdate, retrievedUser);
     }
 
+    /**
+     * Verify successful update of user
+     */
+    @Test
+    void mergeUpdateSuccess() {
+        String newLastName = "Randall";
+        User userToUpdate = (User) userDao.getById(3);
+        userToUpdate.setLastName(newLastName);
+        userDao.mergeUpdate(userToUpdate);
+
+        User retrievedUser = (User) userDao.getById(3);
+        assertEquals(userToUpdate, retrievedUser);
+    }
 
     /**
      * Verify successful get by property (equal match)
