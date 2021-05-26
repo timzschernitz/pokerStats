@@ -1,4 +1,6 @@
-INSERT INTO test_poker.game (id, user_id, date_played, buy_in_paid, rebuy_paid, position_finished, money_won) VALUES
-    (1, 1, '2021/02/21', 20, 0, 1, 60),
-    (2, 2, '2021/02/21', 20, 20, 2, 20),
-    (3, 3, '2021/02/21', 20, 0, 3, 0);
+INSERT INTO test_poker.game
+    (id, user_id, tournament_name, date_played, buy_in_paid, rebuy_paid, position_finished, money_won)
+VALUES
+    (1, 1, 'Tournament #01', '2021/02/21', 1500, 0, 1, 60),
+    (2, 3, 'Tournament #01', '2021/02/21', 1500, 20, 2, 20),
+    (3, 2, 'Tournament #01', '2021/02/21', 1500, 0, 3, 0);

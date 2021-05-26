@@ -1,1 +1,1 @@
-DROP TABLE test_poker.game;
+DROP TABLE game;

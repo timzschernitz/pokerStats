@@ -1,8 +1,5 @@
 package edu.matc.controller;
 
-import edu.matc.entity.User;
-import edu.matc.persistence.GenericDao;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,13 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.lang.Integer.parseInt;
 
 /**
- * A simple servlet to welcome the user.
+ * This class adds a login failure message to be displayed on the login page upon
+ * an unsuccessful login attempt.
+ *
  * @author tzschernitz
  */
 

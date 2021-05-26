@@ -4,23 +4,15 @@ import edu.matc.entity.Role;
 import edu.matc.entity.User;
 import edu.matc.persistence.GenericDao;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.List;
-
-import static java.lang.Integer.parseInt;
 
 /**
- * A simple servlet to welcome the user.
+ * This classes processes a users registration request.
  * @author tzschernitz
  */
 
@@ -53,7 +45,6 @@ public class RegisterAction extends HttpServlet {
         GenericDao<User> userDao = new GenericDao<>(User.class);
         Integer insertedUserId = userDao.insert(user);
         //TODO add a Log statement here to log confirmation of registration
-        
 
         Role role;
         GenericDao<Role> roleDao = new GenericDao<>(Role.class);

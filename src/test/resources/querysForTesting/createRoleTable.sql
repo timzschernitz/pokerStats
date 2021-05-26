@@ -2,7 +2,7 @@ create table test_poker.role
 (
     id        int auto_increment primary key,
     role_name varchar(25) not null,
-    user_name varchar(15) not null,
+    user_name varchar(30) not null,
     user_id   int         not null,
     constraint role_id_uindex
         unique (id),

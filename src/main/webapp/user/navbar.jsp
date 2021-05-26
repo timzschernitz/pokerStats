@@ -47,7 +47,7 @@
                                     Admin Options
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="adminDropDownMenu">
-                                    <li><a class="dropdown-item" href="#">Enter Game Stats</a></li>
+                                    <li><a class="dropdown-item" href="../admin/importData.jsp">Import Game Stats</a></li>
                                     <li><a class="dropdown-item" href="#">Score Corrections</a></li>
                                     <li><a class="dropdown-item" href="#">Player Maintenance</a></li>
                                 </ul>

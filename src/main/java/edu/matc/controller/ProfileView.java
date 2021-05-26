@@ -11,18 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Integer.parseInt;
-
 /**
- * A simple servlet to welcome the user.
+ * This class routes the user to their profile page.
  * @author tzschernitz
  */
 
 @WebServlet(
-        urlPatterns = {"/user/profileView"}
+        urlPatterns = {"/user/profileView",
+            "/admin/profileView"}
 )
 
 public class ProfileView extends HttpServlet {
@@ -30,13 +28,9 @@ public class ProfileView extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-
         GenericDao userDao = new GenericDao(User.class);
 
-
         HttpSession session = req.getSession();
-//        String username = (String) session.getAttribute("username");
-
         List<User> userProfileData = userDao.getByPropertyEqual("userName", req.getRemoteUser());
 
         /* Determine if sufficient search criteria entered for specific search or to

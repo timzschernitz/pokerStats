@@ -1,9 +1,5 @@
 package edu.matc.controller;
 
-import edu.matc.entity.User;
-import edu.matc.persistence.GenericDao;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,13 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.lang.Integer.parseInt;
 
 /**
- * A simple servlet to welcome the user.
+ * This class logs a user out of their account.
  * @author tzschernitz
  */
 
@@ -35,7 +27,6 @@ public class Logout extends HttpServlet {
 
         String url = "index.jsp";
         resp.sendRedirect(url);
-
 
     }
 }

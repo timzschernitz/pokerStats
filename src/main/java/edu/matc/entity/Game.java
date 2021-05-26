@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- *
+ * This class is used to store game related data.
  *
  * @author tzschernitz
  */
@@ -19,6 +19,9 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
+
+    @Column(name = "tournament_name")
+    private String tournamentName;
 
     @Column(name = "date_played")
     private LocalDate datePlayed;
@@ -42,12 +45,14 @@ public class Game {
     public Game() {
     }
 
-    public Game(LocalDate datePlayed,
+    public Game(String tournamentName,
+                LocalDate datePlayed,
                 int buyInPaid,
                 int rebuyPaid,
                 int moneyWon,
                 int positionFinished,
                 User user) {
+        this.tournamentName = tournamentName;
         this.datePlayed = datePlayed;
         this.buyInPaid = buyInPaid;
         this.rebuyPaid = rebuyPaid;
@@ -62,6 +67,14 @@ public class Game {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTournamentName() {
+        return tournamentName;
+    }
+
+    public void setTournamentName(String tournamentName) {
+        this.tournamentName = tournamentName;
     }
 
     public LocalDate getDatePlayed() {

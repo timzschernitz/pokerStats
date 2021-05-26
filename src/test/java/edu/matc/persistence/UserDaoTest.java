@@ -65,7 +65,7 @@ public class UserDaoTest extends DaoTest {
         assertNull(userDao.getById(userToDelete.getId()));
 
         GenericDao gameDao = new GenericDao(Game.class);
-        List <Game> foundGames = gameDao.getByPropertyEqual("id", 2);
+        List <Game> foundGames = gameDao.getByPropertyEqual("user", 2);
         assertEquals(0, foundGames.size());
     }
 
@@ -107,7 +107,8 @@ public class UserDaoTest extends DaoTest {
         User expectedUser = new User("pokerstar","jim","cunningham","East Madison",0,"MAD CITY POKER");
         expectedUser.setId(1);
 
-        List<User> obtainedUser = userDao.getByPropertyEqual("lastName", expectedUser.getLastName());
+//        List<User> obtainedUser = userDao.getByPropertyEqual("lastName", expectedUser.getLastName());
+        List<User> obtainedUser = userDao.getByPropertyEqual("userName", expectedUser.getUserName());
         assertEquals(expectedUser, obtainedUser.get(0));
 
     }

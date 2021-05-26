@@ -19,12 +19,14 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 
 /**
- * A simple servlet to welcome the user.
+ * This class processes a users request to view their stats and routes them
+ * to the appropriate stats page along with the necessary data.
  * @author tzschernitz
  */
 
 @WebServlet(
-        urlPatterns = {"/user/getMyStats"}
+        urlPatterns = {"/user/getMyStats",
+                "/admin/getMyStats"}
 )
 
 public class MyStatsView extends HttpServlet {

@@ -2,13 +2,11 @@ package edu.matc.process;
 
 import edu.matc.entity.Game;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 /**
- * This class receives indiviual game/tournament data and processes it by determining
+ * This class receives individual game/tournament data and processes it by determining
  * averages and totals from the chunk of data received.
  *
  */
@@ -19,8 +17,13 @@ public class CareerStatProcessor {
 
     public CareerStatProcessor() {}
 
-
-
+    /**
+     * this method receives an array of games and compiles the data into career
+     * statistics rather than individual game stats.
+     *
+     * @param gameDataToProcess the individual games to compile to career stats.
+     * @return the compiled career stats.
+     */
     public HashMap<String, Integer> processStats(List<Game> gameDataToProcess) {
 
         int totalGamesPlayed = gameDataToProcess.size();

@@ -42,6 +42,7 @@ public class GameDaoTest extends DaoTest {
     void insertSuccess() {
 
         Game newGame = new Game(
+                "Tournament #02",
                 LocalDate.of(2021, 05, 22),
                 15,
                 0,
@@ -99,8 +100,9 @@ public class GameDaoTest extends DaoTest {
     void getByPropertyEqualSuccess() {
 
         Game expectedGame = new Game(
+                "Tournament #03",
                 LocalDate.of(2021, 02, 21),
-                20,
+                1500,
                 0,
                 60,
                 1,
