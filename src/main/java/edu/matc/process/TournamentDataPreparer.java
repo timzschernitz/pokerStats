@@ -3,8 +3,6 @@ package edu.matc.process;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 
 /**
  * The type Tournament data preparer.
@@ -12,30 +10,16 @@ import java.util.Map;
 public class TournamentDataPreparer {
 
     /**
-     * The Data to prepare.
-     */
-    List<String> dataToPrepare;
-
-    /**
      * Instantiates a new Tournament data preparer.
      */
     public TournamentDataPreparer() {}
-
-    /**
-     * Instantiates a new Tournament data preparer.
-     *
-     * @param dataToPrepare the data to prepare
-     */
-    public TournamentDataPreparer(List<String> dataToPrepare) {
-        this.dataToPrepare = dataToPrepare;
-    }
 
     /**
      * Prepare data array list.
      *
      * @return the array list
      */
-    public ArrayList<HashMap<String, String>> prepareData() {
+    public ArrayList<HashMap<String, String>> prepareData(List<String> dataToPrepare) {
 
         return storePreparedData(
                 parseOutStringData(
@@ -119,5 +103,4 @@ public class TournamentDataPreparer {
         }
         return strippedData;
     }
-
 }

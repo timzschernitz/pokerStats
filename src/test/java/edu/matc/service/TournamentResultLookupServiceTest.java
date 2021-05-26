@@ -45,24 +45,29 @@ public class TournamentResultLookupServiceTest implements PropertiesLoaderInterf
                 + properties.getProperty("hard.code.in.classes");
 
         tournamentResult = (TournamentResult) lookup.lookupDetails(apiUrl);
-        ArrayList<HashMap<String, String>> preparedData = new TournamentDataPreparer(tournamentResult.getData()).prepareData();
+        ArrayList<HashMap<String, String>> preparedData = new TournamentDataPreparer().prepareData(tournamentResult.getData());
 
 
 
-        int indexTest = 0;
+
         for (HashMap<String, String> test : preparedData) {
-            indexTest++;
 
-            for (Map.Entry<String, String> test2 : test.entrySet()) {
-                System.out.println(
-                        "====" + "player#"
-                                + indexTest
-                                + "==== "
-                                + test2.getKey()
-                                + " "
-                                + test2.getValue()
-                );
-            }
+            System.out.println(test.get("AddOn"));
+
+//            for (String bloop : test.keySet()) {
+//                System.out.println(bloop);
+//            }
+
+//            for (Map.Entry<String, String> test2 : test.entrySet()) {
+//                System.out.println(
+//                        "====" + "player#"
+//                                + indexTest
+//                                + "==== "
+//                                + test2.getKey()
+//                                + " "
+//                                + test2.getValue()
+//                );
+//            }
         }
 
     }
