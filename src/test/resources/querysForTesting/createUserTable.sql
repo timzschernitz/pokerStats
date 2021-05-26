@@ -1,4 +1,4 @@
-create table test_poker.user
+create table user
 (
     id int(11) not null auto_increment primary key,
     user_name  varchar(30)          not null,

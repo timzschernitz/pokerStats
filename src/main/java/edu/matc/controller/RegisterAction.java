@@ -55,5 +55,8 @@ public class RegisterAction extends HttpServlet {
             roleDao.insert(role);
         }
 
+        String url = "index";
+        resp.sendRedirect(url);
+
     }
 }

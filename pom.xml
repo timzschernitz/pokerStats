@@ -152,7 +152,7 @@
     </dependencies>
 
     <build>
-        <finalName>week8exercise</finalName>
+        <finalName>pokerStatTracker</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
