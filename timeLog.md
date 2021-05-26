@@ -29,3 +29,10 @@
 |3/19/2021|Continue work on indie project for checkpoint 3|2|
 |3/20/2021|More work on indie project|4|
 |3/22/2021|Wrap up last necessary details to meet checkpoint 3 for indie proj.|5|
+|4/17/2021|Refactored some project structure, began stubbing out classes for the Poker mavens API|3|
+|4/27/2021|Continued working on API, focused on formatting return data so that could be digested by application|3|
+|5/1/2021|Continued to work on data parser for API|2|
+|5/21/2021|Created separate class to process return data from API. Added logout functionality.|3|
+|5/23/2021|Did some general refactoring as well as worked on some tests|4|
+|5/24/2021|implemented admin functionality, hooked up player stat viewing and profile editing. Connected up registration.|6|
+|5/25/2021|Made final updates to app to ensure meeting minimum necessary functionality for app usability.|5|
