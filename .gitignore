@@ -34,10 +34,7 @@
 # Maven
 /target/
 /log/
-
 /lib/
-
-
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -56,6 +53,9 @@ fabric.properties
 #logs
 */*.log
 logs/
+
+#config for hibernate
+hibernate.cfg.xml
 
 # Compiled class file
 *.class
