@@ -34,8 +34,10 @@
 # Maven
 /target/
 /log/
-/logs
+
 /lib/
+
+
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -53,6 +55,7 @@ fabric.properties
 
 #logs
 */*.log
+logs/
 
 # Compiled class file
 *.class
